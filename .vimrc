@@ -108,7 +108,8 @@ nnoremap tk gt
         colorscheme solarized
         "colorscheme molokai
     
-    "powerline fonts需要手动安装
+    "powerline fonts需要手动安装，在airline中使用powerline的箭头符号
+    "对于ubuntu 16.04, 如果安装后还是有问题的话，可以试着移除以下文件：/etc/fonts/conf.d/70-no-bitmaps.conf
     Plugin 'powerline/fonts'
     "状态栏airline
     Plugin 'vim-airline/vim-airline'
@@ -125,6 +126,8 @@ nnoremap tk gt
 
         let g:airline#extensions#tagbar#enabled = 1
         let g:airline#extensions#tagbar#flags = 'f'
+
+        let g:airline#extensions#whitespace#enabled = 0
 
     "C++语法高亮支持
     Plugin 'Mizuchi/STL-Syntax'
@@ -155,7 +158,9 @@ nnoremap tk gt
     "代码搜索
     Plugin 'dyng/ctrlsf.vim'
         "依赖于系统的ack工具，需要先在系统中安装ack
-        let g:ctrlsf_winsize = '20%'
+        let g:ctrlsf_winsize = 'auto'
+        let g:ctrlsf_default_root = 'project'
+        let g:ctrlsf_ignore_dir = ['build', 'doc', 'java', 'c_include', 'libs', 'net', 'obj', 'third_party', 'tool']
         nnoremap <Leader>sf :CtrlSF<CR>
 
     "快速代码注释
@@ -165,8 +170,8 @@ nnoremap tk gt
     "1. 需要安装python2.6以上，及python-dev
     "2. 参考这个安装指引进行安装 https://github.com/lgon528/use_vim_as_ide#5.4.2 
     Plugin 'Valloric/YouCompleteMe'
-        "指定.ycm_extra_conf.py
-        let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+        "指定全局.ycm_extra_conf.py
+        "let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
         "YCM 补全菜单配色
         "菜单
         highlight Pmenu cterm=bold ctermfg=255 ctermbg=32 guifg=#ffffff guibg=#EEE8D5
@@ -194,6 +199,8 @@ nnoremap tk gt
         "强制重新代码检查，可能会使得vim卡住
         nnoremap <F5> :YcmForceCompileAndDiagnostics<CR><CR>:lopen<CR>
         "引入 C++ 标准库tags
+        "run cmd in directory 
+        "ctags -R --c++-kinds=+l+x+p --fields=+iaSl --extra=+q --language-force=c++ -f stdcpp.tags
         set tags+=/usr/include/c++/5/stdcpp.tags
         "补全内容不以分割子窗口形式出现，只显示补全列表
         set completeopt-=preview
