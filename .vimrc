@@ -80,7 +80,7 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 "将;设置为命令前缀
-let mapleader=";"
+let mapleader=","
 
 "映射切换tab的键位
 nnoremap tj gT
@@ -146,6 +146,39 @@ nnoremap tk gt
         let g:tagbar_autoclose=1
         nnoremap <Leader>fj :TagbarToggle<CR>
 
+        " 设置 ctags 对哪些代码元素生成标签
+        let g:tagbar_type_cpp = {
+            \ 'kinds' : [
+                \ 'd:macros:1',
+                \ 'g:enums',
+                \ 't:typedefs:0:0',
+                \ 'e:enumerators:0:0',
+                \ 'n:namespaces',
+                \ 'c:classes',
+                \ 's:structs',
+                \ 'u:unions',
+                \ 'f:functions',
+                \ 'm:members:0:0',
+                \ 'v:global:0:0',
+                \ 'x:external:0:0',
+             \ ],
+             \ 'sro'        : '::',
+             \ 'kind2scope' : {
+                 \ 'g' : 'enum',
+                 \ 'n' : 'namespace',
+                 \ 'c' : 'class',
+                 \ 's' : 'struct',
+                 \ 'u' : 'union'
+             \ },
+             \ 'scope2kind' : {
+                 \ 'enum'      : 'g',
+                 \ 'namespace' : 'n',
+                 \ 'class'     : 'c',
+                 \ 'struct'    : 's',
+                 \ 'union'     : 'u'
+             \ }
+             \ }
+
    "让vim自动更新ctags
     Plugin 'DfrankUtil'
     Plugin 'vimprj'
@@ -154,11 +187,17 @@ nnoremap tk gt
         "默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v
         "默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
         let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+        "indexer还有一个配置文件，位于~/.indexer_files, 内容可以设置为：
+        " --------------- ~/.indexer_files ---------------
+        "  [foo]
+        "  /data/workplace/foo/src/
+        "  [bar]
+        "  /data/workplace/bar/src/
 
     "代码搜索
     Plugin 'dyng/ctrlsf.vim'
         "依赖于系统的ack工具，需要先在系统中安装ack
-        let g:ctrlsf_auto_close = 0
+        "let g:ctrlsf_auto_close = 0
         let g:ctrlsf_winsize = 'auto'
         let g:ctrlsf_default_root = 'project'
         let g:ctrlsf_ignore_dir = ['build', 'doc', 'java', 'c_include', 'libs', 'net', 'obj', 'third_party', 'tool']
@@ -194,7 +233,7 @@ nnoremap tk gt
         let g:ycm_always_populate_location_list=1
         "错误、警告符号
         let g:ycm_error_symbol='>>'
-        let g:ycm_warning_symbol='>*'
+        let g:ycm_warning_symbol='**'
         "YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
         inoremap <leader>; <C-x><C-o>
         "强制重新代码检查，可能会使得vim卡住
@@ -202,7 +241,7 @@ nnoremap tk gt
         "引入 C++ 标准库tags
         "run cmd in directory 
         "ctags -R --c++-kinds=+l+x+p --fields=+iaSl --extra=+q --language-force=c++ -f stdcpp.tags
-        set tags+=/usr/include/c++/5/stdcpp.tags
+        set tags+=/usr/include/c++/6.1.1/stdcpp.tags
         "补全内容不以分割子窗口形式出现，只显示补全列表
         set completeopt-=preview
 
