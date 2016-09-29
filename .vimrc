@@ -76,8 +76,8 @@ set expandtab
 
 "设置编码方式
 set encoding=utf-8
-"自动判断编码时 依次尝试一下编码
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"自动判断编码时 依次尝试以下编码
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,gb2312,big5,latin1
 
 "将;设置为命令前缀
 let mapleader=","
@@ -205,6 +205,7 @@ nnoremap tk gt
 
     "快速代码注释
     Plugin 'scrooloose/nerdcommenter'
+    let g:NERDSpaceDelims=1
 
     "代码自动补全
     "1. 需要安装python2.6以上，及python-dev
