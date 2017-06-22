@@ -197,7 +197,7 @@ nnoremap tk gt
     "代码搜索
     Plugin 'dyng/ctrlsf.vim'
         "依赖于系统的ack工具，需要先在系统中安装ack
-        "let g:ctrlsf_auto_close = 0
+        let g:ctrlsf_auto_close = 0
         let g:ctrlsf_winsize = 'auto'
         let g:ctrlsf_default_root = 'project'
         let g:ctrlsf_ignore_dir = ['build', 'doc', 'java', 'c_include', 'libs', 'net', 'obj', 'third_party', 'tool']
