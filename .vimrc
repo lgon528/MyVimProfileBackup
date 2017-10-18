@@ -259,7 +259,8 @@ nnoremap tk gt
         "let g:syntastic_check_on_open = 0
         "let g:syntastic_check_on_wq = 0
 
- 
+    "Golang语法支持
+    Plugin 'fatih/vim-go'
 
     "Vundle配置必须 开启插件
     filetype plugin indent on

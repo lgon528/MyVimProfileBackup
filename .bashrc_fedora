@@ -5,6 +5,12 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# if [ -e /usr/share/terminfo/x/xterm-256color ];then
+    # export TERM='xterm-256color'
+# else
+    # export TERM='xterm-color'
+# fi
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -17,6 +23,7 @@ alias ccacheon='unset CCACHE_DISABLE;export NDK_CCACHE=ccache'
 alias ccacheoff='export CCACHE_DISABLE=1;unset NDK_CCACHE'
 
 alias make='time make'
+alias tmux='tmux -2'
 
 export GYP_HOME=~/workspace/gyp
 export JDK_HOME=~/workspace/jdk1.8.0_92/bin
