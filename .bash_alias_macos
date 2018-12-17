@@ -1,0 +1,9 @@
+alias ll='ls -lG'
+alias awk='gawk'
+alias cp='gcp'
+alias make='time make'
+alias tmux='tmux -2'
+
+alias proxyon='export http_proxy=http://web-proxy.oa.com:8080;export https_proxy=http://web-proxy.oa.com:8080;export ftp_proxy=http://web-proxy.oa.com:8080;export no_proxy=localhost,127.0.0.0/8,::1;export all_proxy=socks://web-proxy.oa.com:8080'
+alias proxyoff='unset HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY no_proxy http_proxy https_proxy ftp_proxy all_proxy'
+

@@ -87,16 +87,19 @@ nnoremap tj gT
 nnoremap tk gt
 
 "vundle相关配置
+" 安装 vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git
+" ~/.vim/bundle/Vundle.vim
 "{
 
     "开始使用Vundle的必须配置
     set nocompatible
     filetype off
-    set rtp+=~/.vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#rc()
 
     "使用Vundle来管理Vundle
-    Plugin 'gmarik/vundle'
+    Plugin 'VundleVim/Vundle.vim'
 
     "VIM主题配色方案
     Plugin 'altercation/vim-colors-solarized'
@@ -198,6 +201,7 @@ nnoremap tk gt
     Plugin 'dyng/ctrlsf.vim'
         "依赖于系统的ack工具，需要先在系统中安装ack
         let g:ctrlsf_auto_close = 0
+        let g:ctrlsf_ackprg='ack'
         let g:ctrlsf_winsize = 'auto'
         let g:ctrlsf_default_root = 'project'
         let g:ctrlsf_ignore_dir = ['build', 'doc', 'java', 'c_include', 'libs', 'net', 'obj', 'third_party', 'tool']
